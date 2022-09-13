@@ -1,0 +1,26 @@
+<script src="{{asset('guido/js/jquery-3.6.0.js')}}"></script>
+<script src="{{asset('guido/js/jquery-migrate-3.0.0.min.js')}}"></script>
+<script src="{{asset('guido/js/popper.min.js')}}"></script>
+<script src="{{asset('guido/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('guido/js/jquery.mmenu.all.js')}}"></script>
+<script src="{{asset('guido/js/ace-responsive-menu.js')}}"></script>
+<script src="{{asset('guido/js/chart.min.js')}}"></script>
+<script src="{{asset('guido/js/chart-custome.js')}}"></script>
+<script src="{{asset('guido/js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('guido/js/isotop.js')}}"></script>
+<script src="{{asset('guido/js/snackbar.min.js')}}"></script>
+<script src="{{asset('guido/js/simplebar.js')}}"></script>
+<script src="{{asset('guido/js/parallax.js')}}"></script>
+<script src="{{asset('guido/js/scrollto.js')}}"></script>
+<script src="{{asset('guido/js/jquery-scrolltofixed-min.js')}}"></script>
+<script src="{{asset('guido/js/jquery.counterup.js')}}"></script>
+<script src="{{asset('guido/js/wow.min.js')}}"></script>
+<script src="{{asset('guido/js/progressbar.js')}}"></script>
+<script src="{{asset('guido/js/slider.js')}}"></script>
+<script src="{{asset('guido/js/timepicker.js')}}"></script>
+<script src="{{asset('guido/js/jquery.smartuploader.js')}}"></script>
+<script src="{{asset('guido/js/dashboard-script.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM&amp;callback=initMap"></script>
+<script src="{{asset('guido/js/googlemaps1.js')}}"></script>
+<!-- Custom script for all pages -->
+<script src="{{asset('guido/js/script.js')}}"></script>

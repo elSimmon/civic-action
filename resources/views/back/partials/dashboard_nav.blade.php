@@ -9,7 +9,7 @@
                         <li><a href="#"><span class="flaticon-list"></span> Campaigns</a></li>
                         <li><a href="{{route('states')}}"><span class="flaticon-love"></span> States</a></li>
                         <li><a href="{{route('categories')}}"><span class="flaticon-chat"></span> Categories</a></li>
-                        <li><a href="#"><span class="flaticon-note"></span> Targets</a></li>
+                        <li><a href="{{route('all-targets')}}"><span class="flaticon-note"></span> Targets</a></li>
                         <li><a href="#"><span class="flaticon-list"></span> Users</a></li>
                     </ul>
                 </div>

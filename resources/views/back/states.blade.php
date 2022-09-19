@@ -25,7 +25,7 @@
                                         <div class="col-lg-12">
                                             <div class="my_profile_setting_input form-group mt100-500">
                                                 <label for="formGroupExampleInput1">State Name</label>
-                                                <input type="text" name="name" class="form-control" id="formGroupExampleInput1" placeholder="Agriculture" required>
+                                                <input type="text" name="name" class="form-control" id="formGroupExampleInput1" placeholder="Ebonyi" required>
                                             </div>
                                         </div>
                                         {{--                                    <div class="col-lg-12">--}}
@@ -72,7 +72,7 @@
                                         {{--                                    </div>--}}
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" class="btn update_btn">Save Category</button>
+                                                <button type="submit" class="btn update_btn">Save State</button>
                                             </div>
                                         </div>
                                     </div>
@@ -81,20 +81,20 @@
                         </div>
                         <div class="col-xl-8">
                             <div class="my_dashboard_profile">
-                                <h4 class="mb20">Available Categories</h4>
+                                <h4 class="mb20">Available States</h4>
                                 <div class="row">
                                     <div class="col-md-12 table-responsive">
                                         <table class="table table-striped table-condensed table-success">
                                             <tr>
                                                 <th>ID</th>
                                                 <th>State Name</th>
-                                                <th>Activity</th>
+                                                <th>LGAs</th>
                                             </tr>
                                             @foreach($states as $state)
                                                 <tr>
                                                     <td>{{$state->id}}</td>
                                                     <td>{{$state->name}}</td>
-                                                    <td>0</td>
+                                                    <td>{{$state->lgas()->count()}}</td>
                                                 </tr>
                                             @endforeach
                                         </table>

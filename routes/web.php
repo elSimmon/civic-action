@@ -45,5 +45,9 @@ Route::post('/create-categories', [App\Http\Controllers\CategoryController::clas
 // state routes
 Route::get('/states', [App\Http\Controllers\StateController::class, 'create'])->name('states');
 Route::post('/create-state', [App\Http\Controllers\StateController::class, 'store'])->name('create-state');
+Route::get('getLgas/{id}', [App\Http\Controllers\CampaignController::class, 'getLgas']);
 
 
+//target routes
+Route::get('/all-targets', [\App\Http\Controllers\TargetController::class, 'index'])->name('all-targets');
+Route::post('/new-target', [\App\Http\Controllers\TargetController::class, 'create'])->name('new-target');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use App\Models\Category;
+use App\Models\Lga;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +34,13 @@ class CampaignController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('front.create_campaign', compact('categories'));
+        $states = State::all();
+        return view('front.create_campaign', compact('categories', 'states'));
+    }
+
+    public function getLgas($id=0){
+        $lgaData['data'] = Lga::orderBy('name', 'asc')->select('id', 'name')->where('state_id', $id)->get();
+        return response()->json($lgaData);
     }
 
     /**

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
     use HasFactory;
+
+    public function lgas(){
+        return $this->hasMany(Lga::class);
+    }
+
+    public function campaigns(){
+        return $this->hasMany(Campaign::class);
+    }
+
+    public function targets(){
+        return $this->hasMany(Target::class);
+    }
 }

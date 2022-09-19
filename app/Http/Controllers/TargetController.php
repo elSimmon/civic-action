@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
 use App\Models\Target;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class TargetController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class TargetController extends Controller
      */
     public function index()
     {
-        //
+        $targets = Target::all();
+        $states = State::all();
+        return view('back.targets', compact('targets', 'states'));
     }
 
     /**
@@ -22,9 +31,36 @@ class TargetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,jpg,png,svg|max:5000',
+            'fullname' => 'required|string',
+            'state_id' => 'required|string',
+            'constituency' => 'required|string',
+            'designation' => 'required|string',
+            'phone_number' => 'required|numeric',
+            'email' => 'required|email|max:128'
+        ]);
+        $tag = new Target();
+        $tag->fullname = $request['fullname'];
+        $tag->state_id = $request['state_id'];
+        $tag->constituency = $request['constituency'];
+        $tag->designation = $request['designation'];
+        $tag->phone_number = $request['phone_number'];
+        $tag->email = $request['email'];
+        $tag->approved = 1;
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('targets/'.$filename);
+            Image::make($image)->save($location);
+            $tag->image = $filename;
+        }
+        $tag->save();
+        toast('New Target Added', 'success');
+        return back();
     }
 
     /**

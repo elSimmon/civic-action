@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('designation');
             $table->string('phone_number');
             $table->string('email');
+            $table->tinyInteger('approved')->default(0)->comment('0 means not approved and 1 mean approved');
             $table->timestamps();
         });
     }

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Lga extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['state_id', 'name'];
 }

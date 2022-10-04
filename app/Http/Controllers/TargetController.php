@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\State;
 use App\Models\Target;
+use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TargetController extends Controller
 {
@@ -63,6 +66,11 @@ class TargetController extends Controller
         return back();
     }
 
+    public function targetUpload(){
+        $states = State::all();
+        return view('front.create_new_targets', compact('states'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -71,7 +79,38 @@ class TargetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$image = $request->image;
+        $fullname = $request->fullname;
+        $state_id = $request->state_id;
+        $constituency = $request->constituency;
+        $phone_number = $request->phone_number;
+        $email = $request->email;
+
+        for ($i=0; $i < count($fullname); $i++){
+            if($request->hasFile('image')){
+                $files = $request->file('image');
+                foreach ($files as $file){
+                    $filename = $file->getClientOriginalName();
+                    $extension = strtolower($file->getClientOriginalExtension());
+                    $fileName = time().".".$extension;
+                    $destinationPath = 'public/targets/';
+                    //$location = public_path('targets/'.$filename);
+                    //Image::make($image)->save($location);
+                    $file->move($destinationPath, $filename);
+                }
+            }
+            $datasave = [
+                'image' => $fileName,
+                'fullname' => $fullname,
+                'state_id' => $state_id,
+                'constituency' => $constituency,
+                'phone_number' => $phone_number,
+                'email' => $email
+            ];
+            DB::table('targets')->insert($datasave);
+        }
+        Alert('Success Upload', 'Please waite for about 24 hrs.', 'success');
+        return back();
     }
 
     /**

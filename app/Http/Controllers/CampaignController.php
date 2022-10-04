@@ -6,9 +6,11 @@ use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\Lga;
 use App\Models\State;
+use App\Models\Target;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CampaignController extends Controller
 {
@@ -23,7 +25,8 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        //
+        $camps = Campaign::all();
+        return view('back.campaigns', compact('camps'));
     }
 
     /**
@@ -43,6 +46,11 @@ class CampaignController extends Controller
         return response()->json($lgaData);
     }
 
+    public function getTargets($id=0){
+        $targetData['data'] = Target::orderBy('fullname', 'asc')->select('id', 'fullname', 'designation')->where('state_id', $id)->get();
+        return response()->json($targetData);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,18 +59,33 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'goal'=>'required|numeric'
+        ]);
+
         $org = DB::table('organizations')->where('user_id', Auth::id())->first();
         $campaign = new Campaign();
         $campaign->organization_id = $org->id;
         $campaign->title = $request->title;
         $campaign->description = $request->description;
+        $campaign->objective = $request->objective;
         $campaign->category_id = $request->category_id;
-        $campaign->target = $request->target;
+        $campaign->target_id = $request->target_id;
+        $campaign->state_id = $request->state_id;
+        $campaign->lga_id = $request->lga_id;
+        $campaign->goal = $request->goal;
         $campaign->type = $request->type;
         $campaign->message = $request->message;
         $campaign->save();
 
-        return redirect()->route('home');
+        Alert('Campaign Created Successfully', 'Please wait for admin to approve your campaign', 'success');
+        return redirect('my-campaigns');
+    }
+
+    public function myCampaigns(){
+        $camps = Campaign::where('organization_id', Auth::user()->organization->id)->get();
+//        $camps = DB::table('campaigns')->where('organization_id', Auth::user()->organization->id)->get();
+        return view('front.my_campaigns', compact('camps'));
     }
 
     /**

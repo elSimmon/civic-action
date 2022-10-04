@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('type');
             $table->text('message');
             $table->bigInteger('goal');
+            $table->tinyInteger('approved')->default(0);
             $table->timestamps();
         });
     }

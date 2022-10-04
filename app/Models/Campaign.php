@@ -9,6 +9,10 @@ class Campaign extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['organization_id', 'title', 'description', 'objective', 'category_id', 'target_id', 'state_id', 'lga_id', 'type', 'message', 'goal', 'approved'];
+
+    protected $primaryKey = 'id';
+
     public function organization(){
         return $this->belongsTo(Organization::class);
     }
@@ -19,5 +23,13 @@ class Campaign extends Model
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function target(){
+        return $this->belongsTo(Target::class,);
+    }
+
+    public function state(){
+        return $this->belongsTo(State::class);
     }
 }

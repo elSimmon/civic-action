@@ -12,7 +12,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-7">
-                    <form method="POST" action="{{route('create-campaign')}}" enctype="multipart/form-data">@csrf
+                    <form method="POST" action="{{route('save-campaign')}}" enctype="multipart/form-data">@csrf
                         <div class="my_dashboard_review">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -84,14 +84,9 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                                        <label>Campaign Target*</label>
-                                        <select class="selectpicker" data-live-search="true" data-width="100%">
-                                            <option data-tokens="">Select Type</option>
-                                            <option data-tokens="NewYork">New York</option>
-                                            <option data-tokens="London">London</option>
-                                            <option data-tokens="Paris">Paris</option>
-                                            <option data-tokens="Istanbul">Istanbul</option>
-                                            <option data-tokens="LosAngeles">Los Angeles</option>
+                                        <label>Campaign Target* <span class="text-info text-sm">Can't find your Target? <a class="text-success" href="{{route('upload-targets')}}">Upload Here</a> </span></label>
+                                        <select name="target_id" id="sel_target" class="form-control" data-live-search="true" data-width="100%">
+                                            <option value="" data-tokens="">Select Campaign Target</option>
                                         </select>
                                     </div>
                                 </div>
@@ -109,24 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="my_dashboard_review mt30">
-                            <div class="row">
-                                <div class="col-lg-12 mt50">
-                                    <h5 class="mb20">Logo (required)</h5>
-                                    <ul class="mb0">
-                                        <li class="list-inline-item vat mb30-767">
-                                            <div class="upload_file_input_add_remove">
-                                                <span class="btn_upload"><input name="logo" type="file" id="imag2" title="Select a logo image of square dimensions" class="input-img" required/><span class="flaticon-upload"></span></span>
-                                                <img id="ImgPreview2" src="{{asset('guido/images/resource/upload-img.png')}}" class="preview2" alt="" />
-                                                <button id="removeImage2" class="btn-rmv2" type="button"><span class="flaticon-delete"></span></button>
-                                            </div>
-                                            <small>Maximum file size: 2mb.</small>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-thm listing_save_btn mt30" href="#">Save &amp; Continue</button>
+                        <button type="submit" class="btn btn-thm listing_save_btn mt30" href="#">Create Campaign</button>
                     </form>
                 </div>
             </div>

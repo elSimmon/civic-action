@@ -41,19 +41,24 @@
                     @endif
                     <li class="user_setting">
                         <div class="dropdown">
-                            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{asset('guido/images/team/e1.png')}}" alt="e1.png"> <span class="dn-1366"> {{\Illuminate\Support\Facades\Auth::user()->name}} <span class="fa fa-angle-down"></span></span></a>
+                            @if(\Illuminate\Support\Facades\Auth::user()->organization == null)
+                                <a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle" src="{{asset('guido/images/team/e1.png')}}" alt="Organization Logo"> <span class="dn-1366"> {{\Illuminate\Support\Facades\Auth::user()->name}} <span class="fa fa-angle-down"></span></span>
+                                </a>
+                            @else
+                                <a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle img-fluid" height="50px" width="50px" src="{{asset('logos/'.\Illuminate\Support\Facades\Auth::user()->organization->logo)}}" alt="Organization Logo"> <span class="dn-1366"> {{\Illuminate\Support\Facades\Auth::user()->name}} <span class="fa fa-angle-down"></span></span>
+                                </a>
+                            @endif
                             <div class="dropdown-menu">
                                 <div class="user_set_header">
                                     @if(\Illuminate\Support\Facades\Auth::user()->organization == null)
-                                        <img class="float-left" src="{{asset('guido/images/team/e1.png')}}" alt="e1.png">
+                                        <img class="float-left" src="{{asset('guido/images/team/e1.png')}}" alt="Organization logo">
                                     @else
-                                        <img class="float-left" src="{{asset('logos/'.\Illuminate\Support\Facades\Auth::user()->organization->logo)}}" alt="e1.png">
+                                        <img class="float-left" src="{{asset('logos/'.\Illuminate\Support\Facades\Auth::user()->organization->logo)}}" alt="Organization Logo">
                                     @endif
                                     <p>{{\Illuminate\Support\Facades\Auth::user()->name}} <br><span class="address">{{\Illuminate\Support\Facades\Auth::user()->email}}</span></p>
                                 </div>
                                 <div class="user_setting_content">
-                                    <a class="dropdown-item active" href="#">My Profile</a>
-                                    <a class="dropdown-item" href="#">Messages</a>
+                                    <a class="dropdown-item active" href="{{route('organization-profile')}}">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Log out</a>

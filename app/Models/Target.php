@@ -11,8 +11,10 @@ class Target extends Model
 
     protected $fillable = ['image', 'fullname', 'state_id', 'constituency', 'designation', 'phone_number', 'email', 'approved'];
 
-    public function campaign(){
-        return $this->belongsTo(Campaign::class);
+    protected $primaryKey = 'id';
+
+    public function campaigns(){
+        return $this->hasMany(Campaign::class);
     }
 
     public function state(){

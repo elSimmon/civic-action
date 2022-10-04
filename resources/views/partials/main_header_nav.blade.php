@@ -34,7 +34,7 @@
             </div>
             <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
                 <li>
-                    <a href="#"><span class="title">Home</span></a>
+                    <a href="{{('/')}}"><span class="title">Home</span></a>
                 </li>
                 <li>
                     <a href="#"><span class="title">Explore</span></a>
@@ -45,8 +45,15 @@
                 <li>
                     <a href="#"><span class="title">Contact</span></a>
                 </li>
+                @guest
                 <li class="list-inline-item list_s"><a href="#" class="btn flaticon-avatar" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-1200">Login/Sign Up</span></a></li>
                 <li class="list-inline-item add_listing"><a href="{{route('create-campaign')}}"><span class="icon">+</span><span class="dn-lg"> New Campaign</span></a></li>
+                @else
+                    <li>
+                        <a href="{{route('home')}}"><span class="title">Dashboard</span></a>
+                    </li>
+                    <li class="list-inline-item add_listing"><a href="{{route('create-campaign')}}"><span class="icon">+</span><span class="dn-lg"> New Campaign</span></a></li>
+                @endguest
             </ul>
         </nav>
     </div>

@@ -107,10 +107,9 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, Organization $organization)
     {
-        DB::table('giftcards')->where('id', $id)->update(['country'=>$request->country, 'type'=>$request->card_type, 'denomination'=>$request->denomination, 'rate'=>$request->rate, 'min'=>$request->min, 'max'=>$request->max, 'card_category_id'=>$request->card_category_id]);
-
-        toast('GiftCard has been updated!','success');
-        return redirect()->route('manage-cards');
+        DB::table('organizations')->where('user_id', Auth::id())->update(['name'=>$request->name, 'phone'=>$request->phone, 'email'=>$request->email, 'address'=>$request->address, 'about'=>$request->about, 'website'=>$request->website]);
+        toast('Organization Updated', 'success');
+        return redirect('home');
     }
 
     /**
@@ -121,8 +120,8 @@ class OrganizationController extends Controller
      */
     public function destroy(Organization $organization)
     {
-        Giftcard::find($id)->delete();
-        toast('GiftCard Removed!','error');
-        return redirect()->route('manage-cards');
+        Organization::find($organization)->delete();
+        toast('Organization Removed!','error');
+        return redirect('organizations');
     }
 }

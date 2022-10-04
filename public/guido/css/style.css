@@ -6607,7 +6607,7 @@ form.listing_page_v9{
 }
 .footer_one,
 .footer_middle_area {
-  background-color: #1D293F;
+  background-color: #194202;
 }
 .footer_one.home1:before,
 .footer_one.home3:before{
@@ -10301,7 +10301,7 @@ a.btn_error{
 }
 /*== Dashbord details Page ==*/
 .extra-dashboard-menu{
-  background-color: #1D293E;
+  background-color: #194202;
   padding-bottom: 0;
   padding-top: 77px;
   position: relative;

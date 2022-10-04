@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('welcome');
 });
+
+Route::get('/welcome', [\App\Http\Controllers\PagesController::class, 'welcome'])->name('welcome');
 
 //pages routes
 Route::get('/about', [App\Http\Controllers\PagesController::class, 'about'])->name('about');
@@ -31,9 +33,16 @@ Route::get('/organizations', [App\Http\Controllers\OrganizationController::class
 Route::get('/create-organization', [App\Http\Controllers\OrganizationController::class, 'create'])->name('create-organization');
 Route::post('/create-organization', [App\Http\Controllers\OrganizationController::class, 'store'])->name('create-organization');
 Route::get('/organization-profile', [App\Http\Controllers\OrganizationController::class, 'profile'])->name('organization-profile');
+Route::post('/update-organization', [\App\Http\Controllers\OrganizationController::class, 'update'])->name('update-organization');
+Route::get('/organization-details/{id}', [\App\Http\Controllers\OrganizationController::class, 'update'])->name('organization-details');
+Route::get('/delete-organization/{id}', [\App\Http\Controllers\OrganizationController::class, 'destroy'])->name('delete-organization');
 
 //campaign routes
+Route::get('/campaigns', [App\Http\Controllers\CampaignController::class, 'index'])->name('campaigns');
+Route::get('/my-campaigns', [App\Http\Controllers\CampaignController::class, 'myCampaigns'])->name('my-campaigns');
 Route::get('/create-campaign', [App\Http\Controllers\CampaignController::class, 'create'])->name('create-campaign');
+Route::post('/save-campaign', [App\Http\Controllers\CampaignController::class, 'store'])->name('save-campaign');
+Route::get('/campaign/{id}', [App\Http\Controllers\CampaignController::class, 'show'])->name('campaign');
 
 //admin routes
 Route::get('/admin-dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin-dashboard');
@@ -50,4 +59,8 @@ Route::get('getLgas/{id}', [App\Http\Controllers\CampaignController::class, 'get
 
 //target routes
 Route::get('/all-targets', [\App\Http\Controllers\TargetController::class, 'index'])->name('all-targets');
+Route::get('/upload-targets', [\App\Http\Controllers\TargetController::class, 'targetUpload'])->name('upload-targets');
+Route::post('/store-targets', [\App\Http\Controllers\TargetController::class, 'store'])->name('store-targets');
 Route::post('/new-target', [\App\Http\Controllers\TargetController::class, 'create'])->name('new-target');
+Route::get('getTargets/{id}', [App\Http\Controllers\CampaignController::class, 'getTargets']);
+

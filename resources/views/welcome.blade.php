@@ -353,10 +353,10 @@
                                     <img class="img-whp" height="400px" width="120px" src="{{asset('targets/'.$cmp->target->image)}}" alt="Campain Target">
                                     <div class="thmb_cntnt">
                                         <ul class="tag mb0">
-                                            <li class="list-inline-item"><a href="#">Open</a></li>
+                                            <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Open</a></li>
                                         </ul>
                                         <ul class="tag2 mb0">
-                                            <li class="list-inline-item"><a href="#">Featured</a></li>
+                                            <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Featured</a></li>
                                         </ul>
                                         <ul class="listing_reviews">
                                             <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
@@ -370,7 +370,7 @@
                                 </div>
                                 <div class="details">
                                     <div class="tc_content">
-                                        <div class="badge_icon"><a href="#"><img class="" height="50px" width="50px" src="{{asset('logos/'.$cmp->organization->logo)}}" alt="Organization Logo"></a></div>
+                                        <div class="badge_icon"><a href="{{route('campaign-details',[$cmp->id])}}"><img class="" height="50px" width="50px" src="{{asset('logos/'.$cmp->organization->logo)}}" alt="Organization Logo"></a></div>
                                         <h4>{{$cmp->organization->name}}</h4>
                                         <p>{{$cmp->title}}</p>
                                         <ul class="prop_details mb0">
@@ -406,7 +406,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="main-title text-center">
-                        <h2>Trending Cities</h2>
+                        <h2>Trending Campaign Cities</h2>
                         <p>Cities in Nigeria with highest campaign records</p>
                     </div>
                 </div>

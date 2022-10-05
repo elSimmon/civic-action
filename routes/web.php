@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('/welcome', [\App\Http\Controllers\PagesController::class, 'welcome'])->name('welcome');
 
 //pages routes
+Route::get('/explore', [\App\Http\Controllers\PagesController::class, 'explore'])->name('explore');
+Route::get('/campaign-details/{id}', [\App\Http\Controllers\PagesController::class, 'campaignDetails'])->name('campaign-details');
 Route::get('/about', [App\Http\Controllers\PagesController::class, 'about'])->name('about');
 Route::get('/contact', [App\Http\Controllers\PagesController::class, 'contact'])->name('contact');
 Route::get('/terms', [App\Http\Controllers\PagesController::class, 'terms'])->name('terms');

@@ -32,4 +32,8 @@ class Campaign extends Model
     public function state(){
         return $this->belongsTo(State::class);
     }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
 }

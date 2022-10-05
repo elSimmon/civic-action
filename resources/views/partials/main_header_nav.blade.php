@@ -37,7 +37,7 @@
                     <a href="{{('/')}}"><span class="title">Home</span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="title">Explore</span></a>
+                    <a href="{{route('explore')}}"><span class="title">Campaigns</span></a>
                 </li>
                 <li>
                     <a href="#"><span class="title">About</span></a>

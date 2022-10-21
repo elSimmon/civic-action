@@ -3,14 +3,12 @@
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10"></i> Dashboard Navigation</button>
             <ul id="myDropdown" class="dropdown-content">
-                <li><a href="page-my-dashboard.html"><span class="flaticon-web-page"></span> Dashboard</a></li>
-                <li class="active"><a href="page-profile.html"><span class="flaticon-avatar"></span> My Profile</a></li>
-                <li><a href="page-my-listing.html"><span class="flaticon-list"></span> My Listings</a></li>
-                <li><a href="page-my-bookmark.html"><span class="flaticon-love"></span> Bookmarks</a></li>
-                <li><a href="page-message.html"><span class="flaticon-chat"></span> Message</a></li>
-                <li><a href="page-my-review.html"><span class="flaticon-note"></span> Reviews</a></li>
-                <li><a href="page-add-new-listing.html"><span class="flaticon-web-page"></span> Add New Listing</a></li>
-                <li><a href="page-my-logout.html"><span class="flaticon-logout"></span> Logout</a></li>
+                <li><a href="{{route('home')}}"><span class="flaticon-web-page"></span> Dashboard</a></li>
+                <li class="active"><a href="{{route('organization-profile')}}"><span class="flaticon-avatar"></span>  Profile</a></li>
+                <li><a href="{{route('my-campaigns')}}"><span class="flaticon-list"></span> My Campaigns</a></li>
+                <li><a href="{{route('participants')}}"><span class="flaticon-love"></span> Campaign Participants</a></li>
+                <li><a href="#"><span class="flaticon-chat"></span> Messages</a></li>
+                <li><a href="{{route('my-reviews')}}"><span class="flaticon-note"></span> Campaign Reviews</a></li>
             </ul>
         </div>
     </div>

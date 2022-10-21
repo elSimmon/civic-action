@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\State;
 use App\Models\Target;
+use App\Models\TargetCategory;
 use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,8 @@ class TargetController extends Controller
     {
         $targets = Target::all();
         $states = State::all();
-        return view('back.targets', compact('targets', 'states'));
+        $target_categories = TargetCategory::all();
+        return view('back.targets', compact('targets', 'states', 'target_categories'));
     }
 
     /**
@@ -40,6 +42,7 @@ class TargetController extends Controller
             'image' => 'required|image|mimes:jpeg,jpg,png,svg|max:5000',
             'fullname' => 'required|string',
             'state_id' => 'required|string',
+            'target_category_id' => 'required|string',
             'constituency' => 'required|string',
             'designation' => 'required|string',
             'phone_number' => 'required|numeric',
@@ -48,6 +51,7 @@ class TargetController extends Controller
         $tag = new Target();
         $tag->fullname = $request['fullname'];
         $tag->state_id = $request['state_id'];
+        $tag->target_category_id = $request['target_category_id'];
         $tag->constituency = $request['constituency'];
         $tag->designation = $request['designation'];
         $tag->phone_number = $request['phone_number'];
@@ -62,7 +66,7 @@ class TargetController extends Controller
             $tag->image = $filename;
         }
         $tag->save();
-        toast('New Target Added', 'success');
+        Alert('Target Added Successfully', 'Your Target database has been updated');
         return back();
     }
 

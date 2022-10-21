@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Category;
 use App\Models\State;
 use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
@@ -18,8 +19,18 @@ class PagesController extends Controller
     }
 
     public function explore(){
-        $campaigns = DB::table('campaigns')->where('approved', '>', 0)->paginate(12);
+        //$campaigns = DB::table('campaigns')->where('approved', '>', 0)->get();
+        $campaigns = Campaign::all();
         return view('front.explore_campaigns', compact('campaigns'));
+    }
+
+    public function showCategory($name){
+        $cat = Category::where('name', $name)->get();
+        //$cat = DB::table('categories')->where('name', $name)->get();
+        //$camps = Campaign::where('category_id', $cat->id)->get();
+        $campaigns = Campaign::whereBelongsTo($cat)->get();
+        //dd($camps);
+        return view('front.campaign_by_category', compact('campaigns', 'name'));
     }
 
     public function campaignDetails($id){

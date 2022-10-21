@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('participations', function (Blueprint $table) {
             $table->id();
             $table->integer('campaign_id');
+            $table->integer('organization_id');
             $table->string('name');
             $table->string('email');
             $table->string('phone');

@@ -29,14 +29,27 @@
                                 <form action="{{route('register')}}" method="POST">
                                     @csrf
                                     <div class="form-group input-group">
-                                        <input type="text" name="name" class="form-control" id="exampleInputName4" placeholder="Username">
+                                        <input type="text" name="name" class="form-control @error('email') is-invalid @enderror" id="exampleInputName4" placeholder="Username">
                                     </div>
+                                    @error('name')
+                                    <p class="text-danger text-small">{{$message}}</p>
+                                    @enderror
+
                                     <div class="form-group input-group">
-                                        <input type="email" class="form-control" id="exampleInputEmail4" placeholder="Email">
+                                        <input type="email" name="email"
+                                        class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail4" placeholder="Email">
                                     </div>
+                                    @error('email')
+                                    <p class="text-danger text-small">{{$message}}</p>
+                                    @enderror
+
                                     <div class="form-group input-group mb20">
-                                        <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword4" placeholder="Password">
                                     </div>
+                                    @error('password')
+                                    <p class="text-danger text-small">{{$message}}</p>
+                                    @enderror
+
                                     <div class="form-group input-group mb20">
                                         <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword4" placeholder="Password">
                                     </div>

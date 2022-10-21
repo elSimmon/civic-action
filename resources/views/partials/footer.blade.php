@@ -5,9 +5,9 @@
                 <div class="footer_contact_widget">
                     <h4>Contact Us</h4>
                     <ul class="list-unstyled">
-                        <li class="text-white df"><span class="flaticon-pin mr15"></span><a href="#">329 Queensberry Street, North Melbourne VIC 3051, Australia.</a></li>
-                        <li class="text-white"><span class="flaticon-phone mr15"></span><a href="#">+123 456 7890</a></li>
-                        <li class="text-white"><span class="flaticon-email mr15"></span><a href="#">support@skola.com</a></li>
+                        <li class="text-white df"><span class="flaticon-pin mr15"></span><a href="#">29 Queen Victoria Street Maitama, Abuja Nigeria.</a></li>
+                        <li class="text-white"><span class="flaticon-phone mr15"></span><a href="#">+2348111461196</a></li>
+                        <li class="text-white"><span class="flaticon-email mr15"></span><a href="#">support@civicaction.org</a></li>
                     </ul>
                 </div>
             </div>

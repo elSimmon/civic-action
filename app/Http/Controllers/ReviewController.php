@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
 {
@@ -14,7 +17,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = Review::all();
+        return view('back.reviews', compact('reviews'));
     }
 
     /**
@@ -24,7 +28,8 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+        $reviews = Review::where('organization_id', Auth::user()->organization->id)->get();
+        return view('front.my_reviews', compact('reviews'));
     }
 
     /**
@@ -35,7 +40,23 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           'username'=>'required|string',
+           'email'=>'required|email',
+            'campaign_id'=>'required',
+            'rating'=>'required',
+            'comment'=>'required|string|max:300'
+        ]);
+
+        $rev = new Review();
+        $rev->username = $request->username;
+        $rev->email = $request->email;
+        $rev->campaign_id = $request->campaign_id;
+        $rev->rating = $request->rating;
+        $rev->comment = $request->comment;
+        $rev->save();
+        Alert('Review Added', 'Thanks for your time, we appreciate your feedback', 'success');
+        return back();
     }
 
     /**

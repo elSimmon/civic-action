@@ -14,7 +14,7 @@
             <a href="#" class="navbar_brand float-left dn-smd">
                 <img class="logo1 img-fluid" src="{{asset('guido/images/header-logo.svg')}}" alt="header-logo.svg">
                 <img class="logo2 img-fluid" src="{{asset('guido/images/header-logo2.svg')}}" alt="header-logo2.svg">
-                <span>Civic Action Africa</span>
+                <span>CivicAction</span>
             </a>
             <!-- Responsive Menu Structure-->
             <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
@@ -46,7 +46,7 @@
                     <a href="#"><span class="title">Contact</span></a>
                 </li>
                 @guest
-                <li class="list-inline-item list_s"><a href="#" class="btn flaticon-avatar" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-1200">Login/Sign Up</span></a></li>
+                <li class="list-inline-item list_s"><a href="{{route('login')}}" class="btn flaticon-avatar"  <span class="dn-1200">Login/Sign Up</span></a></li>
                 <li class="list-inline-item add_listing"><a href="{{route('create-campaign')}}"><span class="icon">+</span><span class="dn-lg"> New Campaign</span></a></li>
                 @else
                     <li>

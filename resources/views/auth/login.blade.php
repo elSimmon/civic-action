@@ -27,11 +27,19 @@
                             <form action="{{route('login')}}" method="POST">
                                 @csrf
                                 <div class="input-group mb-2 mr-sm-2">
-                                    <input type="text" name="email" class="form-control" id="inlineFormInputGroupUsername3" placeholder="Username / Email">
+                                    <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="inlineFormInputGroupUsername3" placeholder="Username / Email">
                                 </div>
+                                @error('email')
+                                <p class="text-danger text-small">{{$message}}</p>
+                                @enderror
+
                                 <div class="input-group form-group mb5">
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword4" placeholder="Password">
                                 </div>
+                                @error('password')
+                                <p class="text-danger text-small">{{$message}}</p>
+                                @enderror
+
                                 <div class="form-group custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="exampleCheck2">
                                     <label class="custom-control-label" for="exampleCheck2">Remember me</label>

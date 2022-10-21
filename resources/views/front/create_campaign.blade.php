@@ -84,9 +84,12 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                                        <label>Campaign Target* <span class="text-info text-sm">Can't find your Target? <a class="text-success" href="{{route('upload-targets')}}">Upload Here</a> </span></label>
-                                        <select name="target_id" id="sel_target" class="form-control" data-live-search="true" data-width="100%">
+                                        <label>Campaign Target* <span class="text-info text-sm">Can't find your Target? <a class="text-success" href="#">Upload Here</a> </span></label>
+                                        <select name="target_category_id" class="form-control" data-live-search="true" data-width="100%">
                                             <option value="" data-tokens="">Select Campaign Target</option>
+                                            @foreach($target_categories as $tc)
+                                                <option value="{{$tc->id}}" data-tokens="">{{$tc->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -101,6 +104,22 @@
                                         <label for="propertyDescription">Message*</label>
                                         <textarea name="message" class="form-control" id="propertyDescription" rows="7" required>What message do you want to send to the target?</textarea>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my_dashboard_review mt30">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="mb30">Media</h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h5>Featured image</h5>
+                                    <div class="upload_file_input_add_remove">
+                                        <span class="btn_upload"><input name="image" type="file" id="imag" title="" class="input-img"/><span class="flaticon-upload"></span></span>
+                                        <img id="ImgPreview" src="{{asset('guido/images/resource/upload-img.png')}}" class="preview1" alt="" />
+                                        <button id="removeImage1" class="btn-rmv1" type="button"><span class="flaticon-delete"></span></button>
+                                    </div>
+                                    <small>Dimensions: Height 400px by Width 120px.</small>
                                 </div>
                             </div>
                         </div>

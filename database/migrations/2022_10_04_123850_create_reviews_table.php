@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('email');
             $table->integer('campaign_id');
+            $table->integer('organization_id');
             $table->tinyInteger('rating');
             $table->text('comment');
             $table->timestamps();

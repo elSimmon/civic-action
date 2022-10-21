@@ -36,6 +36,42 @@
         @endphp
         <script type='text/javascript'>
     $(document).ready(function(){
+        $('#sel_state1').change(function(){
+            //state id
+            var id = $(this).val();
+
+            //empty dropdown for LGA
+            $('#sel_lga1').find('option').not(':first').remove();
+
+            // LGA Ajax request
+            $.ajax({
+                url: 'getLgas/'+id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    var len = 0;
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                    }
+
+                    if(len > 0){
+                        // Read data and create lga option
+                        //var sel = document.getElementById('sel_lga');
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+                            //var opt = document.createElement('option');
+                            // opt.value = id;
+                            //opt.innerText = name;
+                            //sel.appendChild(opt);
+                            var option = "<option value=' "+id+" '>"+name+"</option>";
+                            $("#sel_lga1").append(option);
+                        }
+                    }
+                }
+            });
+        });
+
         $('#sel_state').change(function(){
             //state id
             var id = $(this).val();

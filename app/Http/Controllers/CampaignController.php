@@ -7,9 +7,11 @@ use App\Models\Category;
 use App\Models\Lga;
 use App\Models\State;
 use App\Models\Target;
+use App\Models\TargetCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CampaignController extends Controller
@@ -38,7 +40,8 @@ class CampaignController extends Controller
     {
         $categories = Category::all();
         $states = State::all();
-        return view('front.create_campaign', compact('categories', 'states'));
+        $target_categories = TargetCategory::all();
+        return view('front.create_campaign', compact('categories', 'states', 'target_categories'));
     }
 
     public function getLgas($id=0){
@@ -70,12 +73,19 @@ class CampaignController extends Controller
         $campaign->description = $request->description;
         $campaign->objective = $request->objective;
         $campaign->category_id = $request->category_id;
-        $campaign->target_id = $request->target_id;
+        $campaign->target_category_id = $request->target_category_id;
         $campaign->state_id = $request->state_id;
         $campaign->lga_id = $request->lga_id;
         $campaign->goal = $request->goal;
         $campaign->type = $request->type;
         $campaign->message = $request->message;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('campaign_images/'.$filename);
+            Image::make($image)->save($location);
+            $campaign->image = $filename;
+        }
         $campaign->save();
 
         Alert('Campaign Created Successfully', 'Please wait for admin to approve your campaign', 'success');
@@ -87,6 +97,7 @@ class CampaignController extends Controller
 //        $camps = DB::table('campaigns')->where('organization_id', Auth::user()->organization->id)->get();
         return view('front.my_campaigns', compact('camps'));
     }
+
 
     /**
      * Display the specified resource.

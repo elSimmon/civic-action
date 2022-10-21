@@ -14,7 +14,7 @@
             <a href="{{('/')}}" class="navbar_brand float-left dn-smd">
                 <img class="logo1 img-fluid" src="{{asset('guido/images/header-logo2.svg')}}" alt="header-logo.svg">
                 <img class="logo2 img-fluid" src="{{asset('guido/images/header-logo2.svg')}}" alt="header-logo2.svg">
-                <span>Civic Action Portal</span>
+                <span>CivicAction</span>
             </a>
             <!-- Responsive Menu Structure-->
             <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
@@ -22,7 +22,7 @@
             <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
                 @guest
                     <li>
-                        <a href="#"><span class="title">Explore Campaigns</span></a>
+                        <a href="{{route('explore')}}"><span class="title">Campaigns</span></a>
                     </li>
                     <li>
                         <a href="#"><span class="title">About</span></a>
@@ -32,11 +32,14 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{route('home')}}"><span class="title">Home</span></a>
+                        <a href="{{route('explore')}}"><span class="title">Campaigns</span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('home')}}"><span class="title">Dashboard</span></a>
                     </li>
                     @if(\Illuminate\Support\Facades\Auth::user()->role > 0)
                         <li>
-                            <a href="{{route('admin-dashboard')}}"><span class="title">Admin</span></a>
+                            <a href="{{route('admin-dashboard')}}"><span class="title">Admin Dashboard</span></a>
                         </li>
                     @endif
                     <li class="user_setting">

@@ -32,6 +32,20 @@
                                             @enderror
                                         </div>
                                         <div class="col-lg-12">
+                                            <div class="my_profile_setting_input ui_kit_select_search form-group">
+                                                <label>Target Category*</label>
+                                                <select id="sel_state" name="target_category_id" class="selectpicker" data-live-search="true" data-width="100%" required>
+                                                    <option data-tokens="">Select Category</option>
+                                                    @foreach($target_categories as $tc)
+                                                        <option value="{{$tc->id}}" data-tokens="">{{$tc->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @error('target_category_id')
+                                            <span class="text-danger text-xs">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-12">
                                             <div class="my_profile_setting_input form-group">
                                                 <label for="formGroupExampleInput8">Phone</label>
                                                 <input type="text" name="phone_number" class="form-control" id="formGroupExampleInput8">
@@ -118,7 +132,7 @@
                                                     <th class="cartm_title">Photo</th>
                                                     <th class="cartm_title">State</th>
                                                     <th class="cartm_title">Constituency</th>
-                                                    <th class="cartm_title">Designation</th>
+                                                    <th class="cartm_title">Target Category</th>
                                                     <th class="cartm_title">Status</th>
                                                     <th class="cartm_title"></th>
                                                 </tr>
@@ -134,7 +148,7 @@
                                                     </th>
                                                     <td>{{$tg->state->name}}</td>
                                                     <td>{{$tg->constituency}}</td>
-                                                    <td>{{$tg->designation}}</td>
+                                                    <td>{{$tg->target_category->name}}</td>
                                                     <td>
                                                         @switch($tg->approved)
                                                             @case(1)

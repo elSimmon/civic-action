@@ -49,11 +49,8 @@
                                                         <td>{{number_format($camp->goal)}}</td>
                                                         <td>
                                                             @switch($camp->approved)
-                                                                @case(2)
-                                                                <span class="color-success">Approved</span>
-                                                                @break
                                                                 @case(1)
-                                                                <span class="color-danger">Declined</span>
+                                                                <span class="color-success">Approved</span>
                                                                 @break
                                                                 @default
                                                                 <span class="color-warning">Pending</span>

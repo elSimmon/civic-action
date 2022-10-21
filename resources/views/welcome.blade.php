@@ -11,163 +11,11 @@
     <!-- Main Header Nav -->
     @include('partials.main_header_nav')
 
-    <!-- Modal -->
-    @include('partials.sign_up_modal')
 
     <!-- Main Header Nav For Mobile -->
     @include('partials.mobile_header_nav')
 
     <!-- Search Field Modal -->
-    <section class="modal fade search_dropdown" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="popup_modal_wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a class="close closer" data-dismiss="modal" aria-label="Close" href="#"><span><img src="{{asset('guido/images/icons/close.svg')}}" alt=""></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 mb30">
-                                    <h3>Filter by Category</h3>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-cutlery"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Restaurant</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-shopping-bag"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Shopping</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-tent"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Outdoor Activities</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-desk-bell"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Hotels</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-mirror"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Beautu & Spa</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-brake"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Automotive</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 mb15 mt20">
-                                    <h3>Explore Hot Location</h3>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc18.jp')}}g" alt="pc18.jpg"></div>
-                                        <div class="details">
-                                            <h4>Miami</h4>
-                                            <p>62 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc19.jp')}}g" alt="pc19.jpg"></div>
-                                        <div class="details">
-                                            <h4>Roma</h4>
-                                            <p>92 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc20.jp')}}g" alt="pc20.jpg"></div>
-                                        <div class="details">
-                                            <h4>New Delhi</h4>
-                                            <p>12 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc21.jp')}}g" alt="pc21.jpg"></div>
-                                        <div class="details">
-                                            <h4>London</h4>
-                                            <p>74 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc22.jp')}}g" alt="pc22.jpg"></div>
-                                        <div class="details">
-                                            <h4>Amsterdam</h4>
-                                            <p>62 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc23.jp')}}g" alt="pc23.jpg"></div>
-                                        <div class="details">
-                                            <h4>Berlin</h4>
-                                            <p>92 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc24.jp')}}g" alt="pc24.jpg"></div>
-                                        <div class="details">
-                                            <h4>Paris</h4>
-                                            <p>12 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{asset('guido/images/property/pc25.jp')}}g" alt="pc25.jpg"></div>
-                                        <div class="details">
-                                            <h4>New Zealand</h4>
-                                            <p>74 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Home Design -->
     <section class="home-one home1-overlay bg-img1">
         <div class="container">
@@ -195,10 +43,10 @@
                                                                 <select name="lang" class="form-control js-searchBox">
                                                                     <option value="">Ex: education, governance</option>
                                                                     <option value="TopPicks">Top Picks</option>
-                                                                    <option value="CityOfLondon">City of London</option>
-                                                                    <option value="OutdoorActivities">Outdoor Activities</option>
-                                                                    <option value="Restaurant">Restaurant</option>
-                                                                    <option value="Hotels">Hotels</option>
+                                                                    <option value="CityOfLondon">Lagos</option>
+                                                                    <option value="OutdoorActivities">Abuja</option>
+                                                                    <option value="Restaurant">Enugu</option>
+                                                                    <option value="Hotels">Kano</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -212,11 +60,11 @@
                                                             <div class="select-wrap style2-dropdown">
                                                                 <select name="lang" class="form-control js-searchBox2">
                                                                     <option value="">Your City</option>
-                                                                    <option value="NewYork">New York</option>
-                                                                    <option value="London">London</option>
-                                                                    <option value="Paris">Paris</option>
-                                                                    <option value="Istanbul">Istanbul</option>
-                                                                    <option value="LosAngeles">Los Angeles</option>
+                                                                    <option value="NewYork">Lagos</option>
+                                                                    <option value="London">Abuja</option>
+                                                                    <option value="Paris">Kano</option>
+                                                                    <option value="Istanbul">PHC</option>
+                                                                    <option value="LosAngeles">Edo</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -284,55 +132,22 @@
                         <p><em class="text-white">What are you interested in?</em></p>
                     </div>
                 </div>
+                @php
+                $cats = \App\Models\Category::all();
+                @endphp
                 <div class="row">
+                    @foreach($cats as $cat)
                     <div class="col-sm-6 col-md-4 col-xl-2">
-                        <div class="icon-box text-center">
-                            <div class="icon"><span class="flaticon-cutlery"></span></div>
-                            <div class="content-details">
-                                <div class="title">Politics</div>
+                        <a href="{{route('category',[$cat->name])}}">
+                            <div class="icon-box text-center">
+                                <div class="icon"><span class="flaticon-tent"></span></div>
+                                <div class="content-details">
+                                    <div class="title">{{$cat->name}}</div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-xl-2">
-                        <div class="icon-box text-center">
-                            <div class="icon"><span class="flaticon-shopping-bag"></span></div>
-                            <div class="content-details">
-                                <div class="title">Education</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-xl-2">
-                        <div class="icon-box text-center">
-                            <div class="icon"><span class="flaticon-tent"></span></div>
-                            <div class="content-details">
-                                <div class="title">Economy</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-xl-2">
-                        <div class="icon-box text-center">
-                            <div class="icon"><span class="flaticon-desk-bell"></span></div>
-                            <div class="content-details">
-                                <div class="title">Security</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-xl-2">
-                        <div class="icon-box text-center">
-                            <div class="icon"><span class="flaticon-mirror"></span></div>
-                            <div class="content-details">
-                                <div class="title">Religion</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-xl-2">
-                        <div class="icon-box text-center">
-                            <div class="icon"><span class="flaticon-brake"></span></div>
-                            <div class="content-details">
-                                <div class="title">International</div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -348,31 +163,23 @@
                     <div class="popular_listing_slider1">
                         @foreach($campaigns as $cmp)
                             <div class="item">
-                            <div class="feat_property">
-                                <div class="thumb">
-                                    <img class="img-whp" height="400px" width="120px" src="{{asset('targets/'.$cmp->target->image)}}" alt="Campain Target">
+                                <div class="feat_property">
+                                    <div class="thumb">
+                                        <img class="img-whp" height="400px" width="120px" src="{{asset('targets/'.$cmp->target->image)}}" alt="Campain Target">
                                     <div class="thmb_cntnt">
                                         <ul class="tag mb0">
-                                            <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Open</a></li>
+                                            <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Verified</a></li>
                                         </ul>
                                         <ul class="tag2 mb0">
-                                            <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Featured</a></li>
-                                        </ul>
-                                        <ul class="listing_reviews">
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white total_review" href="#">(5 Review)</a></li>
+                                            <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Participate</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="details">
+                                    <div class="details">
                                     <div class="tc_content">
                                         <div class="badge_icon"><a href="{{route('campaign-details',[$cmp->id])}}"><img class="" height="50px" width="50px" src="{{asset('logos/'.$cmp->organization->logo)}}" alt="Organization Logo"></a></div>
-                                        <h4>{{$cmp->organization->name}}</h4>
-                                        <p>{{$cmp->title}}</p>
+                                        <h4>{{$cmp->title}}</h4>
+                                        <p>{{$cmp->organization->name}}</p>
                                         <ul class="prop_details mb0">
                                             <li class="list-inline-item"><a href="#"><span class="flaticon-phone pr5"></span>
                                                 {{$cmp->target->phone_number}}</a></li>
@@ -391,8 +198,8 @@
                                         </ul>
                                     </div>
                                 </div>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('objective');
             $table->integer('category_id');
-            $table->integer('target_id');
+            $table->integer('target_category_id');
             $table->integer('state_id');
             $table->integer('lga_id');
             $table->string('type');

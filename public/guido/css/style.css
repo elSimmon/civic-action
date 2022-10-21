@@ -6963,13 +6963,13 @@ form.listing_page_v9{
 }
 /*== Inner Pages Breadcrumb ==*/
 .inner_page_breadcrumb {
-  background-image: url(../images/background/inner-pagebg.jpg);
+  background-image: url(../../img/nigeria-flag-02.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
 .inner_page_breadcrumb.style2 {
-  background-image: url(../images/background/inner-pagebg2.jpg);
+  background-image: url(../../img/nigeria-flag-02.jpg);
 }
 .inner_page_breadcrumb.style3 {
   background-image: url(../images/background/inner-pagebg3.jpg);

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('fullname');
+            $table->integer('target_category_id');
             $table->integer('state_id');
             $table->string('constituency')->nullable();
             $table->string('designation');

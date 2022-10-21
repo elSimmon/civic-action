@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\TargetCategory;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class CategoryController extends Controller
+class TargetCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,11 +26,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('back.categories', compact('categories'));
+        $categories = TargetCategory::all();
+        return view('back.target_categories', compact('categories'));
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -43,20 +42,21 @@ class CategoryController extends Controller
             'name' => 'required'
         ]);
 
-        $category = new Category();
+        $category = new TargetCategory();
         $category->name = $request->name;
+        $category->description = $request->description;
         $category->save();
-        Alert::success('Category created successfully!');
-        return redirect()->route('categories');
+        Alert::success('Target Category created successfully!');
+        return redirect()->route('target-categories');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\TargetCategory  $targetCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(TargetCategory $targetCategory)
     {
         //
     }
@@ -64,10 +64,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\TargetCategory  $targetCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(TargetCategory $targetCategory)
     {
         //
     }
@@ -76,10 +76,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\TargetCategory  $targetCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, TargetCategory $targetCategory)
     {
         //
     }
@@ -87,10 +87,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\TargetCategory  $targetCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(TargetCategory $targetCategory)
     {
         //
     }

@@ -20,4 +20,8 @@ class State extends Model
     public function targets(){
         return $this->hasMany(Target::class);
     }
+
+    public function participations(){
+        return $this->hasMany(Participation::class);
+    }
 }

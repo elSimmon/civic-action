@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="my_dashboard_profile">
-                                <h4 class="mb20">My Campaigns Participations: {{$pats->count()}}</h4>
+                                <h4 class="mb20">My Campaign's Participations: {{$pats->count()}}</h4>
                                 <div class="row">
                                     <div class="col-lg-12 mt25">
                                         <div class="listing_table">

@@ -14,22 +14,18 @@ class PagesController extends Controller
 
     public function welcome(){
         //$campaigns = DB::table('campaigns')->where('approved', '>', 0)->latest()->take(9)->get();
-        $campaigns = Campaign::latest()->take(9)->get();
+        $campaigns = Campaign::latest()->where('approved', '=', 1)->take(9)->get();
         return view('welcome', compact('campaigns'));
     }
 
     public function explore(){
-        //$campaigns = DB::table('campaigns')->where('approved', '>', 0)->get();
-        $campaigns = Campaign::all();
+        $campaigns = Campaign::where('approved', '=', 1)->get();
         return view('front.explore_campaigns', compact('campaigns'));
     }
 
     public function showCategory($name){
         $cat = Category::where('name', $name)->get();
-        //$cat = DB::table('categories')->where('name', $name)->get();
-        //$camps = Campaign::where('category_id', $cat->id)->get();
-        $campaigns = Campaign::whereBelongsTo($cat)->get();
-        //dd($camps);
+        $campaigns = Campaign::whereBelongsTo($cat)->where('approved', '=', 1)->get();
         return view('front.campaign_by_category', compact('campaigns', 'name'));
     }
 

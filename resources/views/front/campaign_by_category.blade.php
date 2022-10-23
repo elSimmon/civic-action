@@ -39,8 +39,8 @@
                         @foreach($campaigns as $cmp)
                             <div class="col-md-6 col-lg-4">
                                 <div class="feat_property">
-                                    <a class="thumb">
-                                        <img class="img-whp" height="400px" width="120px" src="{{asset('targets/'.$cmp->target->image)}}" alt="Target Photo">
+                                    <div class="thumb">
+                                        <img class="img-whp" height="400px" width="120px" src="{{asset('campaign_images/'.$cmp->image)}}" alt="Campaign Photo">
                                         <div class="thmb_cntnt">
                                             <ul class="tag mb0">
                                                 <li class="list-inline-item"><a href="#"><span class="fa fa-check"></span></a></li>
@@ -50,7 +50,6 @@
                                                 <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Participate</a></li>
                                             </ul>
                                         </div>
-                                    </a>
                                     </div>
                                     <div class="details">
                                         <div class="tc_content">
@@ -58,8 +57,8 @@
                                             <h4>{{$cmp->title}}</h4>
                                             <p>{{$cmp->organization->name}}</p>
                                             <ul class="prop_details mb0">
-                                                <li class="list-inline-item"><a href="#"><span class="flaticon-phone pr5"></span> {{$cmp->target->phone_number}}</a></li>
-                                                <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span> {{$cmp->state->name}}</a></li>
+                                                <li class="list-inline-item"><a href="#"><span class="flaticon-phone pr5"></span> {{$cmp->organization->phone}}</a></li>
+                                                <li class="list-inline-item"><a href="#"><span class="fa fa-envelope-o pr5"></span> {{$cmp->organization->email}}</a></li>
                                             </ul>
                                         </div>
                                         <div class="fp_footer">

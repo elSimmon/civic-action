@@ -17,8 +17,8 @@
                     <div class="ff_one">
                         <div class="icon"><span class="flaticon-list"></span></div>
                         <div class="detais">
-                            <div class="timer">22</div>
-                            <p>Active Listing</p>
+                            <div class="timer">{{$my_campaigns->count()}}</div>
+                            <p>My Campaigns</p>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         <div class="icon"><span class="flaticon-note"></span></div>
                         <div class="detais">
                             <div class="timer">9382</div>
-                            <p>Total Reviews</p>
+                            <p>My Campaign Participants</p>
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ use App\Models\Campaign;
 use App\Models\Lga;
 use App\Models\Participation;
 use App\Models\State;
+use App\Models\Target;
 use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,9 +74,10 @@ class ParticipationController extends Controller
     public function show(Request $request)
     {
         $campaign = Campaign::find($request->campaign_id);
-        $states = State::all();
-
-        return view('front.participate', compact('states', 'campaign'));
+        $lgas = Lga::where('state_id', $request->state_id)->get();
+        $targets = Target::where(['state_id'=>$request->state_id, 'target_category_id'=>$request->target_category_id])->get();
+        $state = State::find($request->state_id);
+        return view('front.participate', compact('lgas', 'campaign', 'targets', 'state'));
     }
 
     /**

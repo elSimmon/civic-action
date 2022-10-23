@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="my_dashboard_profile">
-                                <h4 class="mb20">All Campaigns</h4>
+                                <h4 class="mb20">All Campaigns: {{$camps->count()}}</h4>
                                 <div class="row">
                                     <div class="col-lg-12 mt25">
                                         <div class="listing_table">
@@ -40,8 +40,8 @@
                                                     <tr>
                                                         <th scope="row">
                                                             <ul class="cart_list">
-                                                                <li class="list-inline-item pr10"><a href="#"><img src="{{asset('targets/'.$camp->target->image)}}" alt="Photo"></a></li>
-                                                                <li class="list-inline-item"><a class="cart_title" href="#">{{$camp->target->fullname}}</a></li>
+                                                                <li class="list-inline-item pr10"><a href="#"><img src="{{asset('campaign_images/'.$camp->image)}}" alt="Photo"></a></li>
+                                                                <li class="list-inline-item"><a class="cart_title" href="#">{{$camp->target_category->name}}</a></li>
                                                             </ul>
                                                         </th>
                                                         <td>{{$camp->organization->name}}</td>
@@ -51,26 +51,23 @@
                                                         <td>{{number_format($camp->goal)}}</td>
                                                         <td>
                                                             @switch($camp->approved)
-                                                                @case(2)
+                                                                @case(1)
                                                                 <span class="color-success">Approved</span>
                                                                 @break
-                                                                @case(1)
-                                                                <span class="color-danger">Declined</span>
+                                                                @case(0)
+                                                                <span class="color-danger">Not Approved</span>
                                                                 @break
                                                                 @default
-                                                                <span class="color-warning">Pending</span>
+                                                                <span class="color-warning">N/A</span>
                                                             @endswitch
                                                         </td>
                                                         <td class="editing_list">
                                                             <ul>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><span class="flaticon-edit"></span></a>
+                                                                <li class="list-inline-item bg-success">
+                                                                    <a href="{{route('approve-campaign',[$camp->id])}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Approve"><span class="fa fa-check text-white"></span></a>
                                                                 </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"><span class="flaticon-view"></span></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><span class="flaticon-delete"></span></a>
+                                                                <li class="list-inline-item bg-danger">
+                                                                    <a href="{{route('decline-campaign',[$camp->id])}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Decline"><span class="fa fa-close text-white"></span></a>
                                                                 </li>
                                                             </ul>
                                                         </td>
@@ -78,27 +75,6 @@
                                                 @endforeach
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="mbp_pagination mt10">
-                                            <ul class="page_navigation">
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> <span class="fa fa-angle-left"></span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item active" aria-current="page">
-                                                    <a class="page-link" href="#">3 <span class="sr-only">(current)</span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#"><span class="fa fa-angle-right"></span></a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>

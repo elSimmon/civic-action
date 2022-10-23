@@ -165,7 +165,7 @@
                             <div class="item">
                                 <div class="feat_property">
                                     <div class="thumb">
-                                        <img class="img-whp" height="400px" width="120px" src="{{asset('targets/'.$cmp->target->image)}}" alt="Campain Target">
+                                        <img class="img-whp" height="400px" width="120px" src="{{asset('campaign_images/'.$cmp->image)}}" alt="Campain Target">
                                     <div class="thmb_cntnt">
                                         <ul class="tag mb0">
                                             <li class="list-inline-item"><a href="{{route('campaign-details',[$cmp->id])}}">Verified</a></li>
@@ -182,9 +182,9 @@
                                         <p>{{$cmp->organization->name}}</p>
                                         <ul class="prop_details mb0">
                                             <li class="list-inline-item"><a href="#"><span class="flaticon-phone pr5"></span>
-                                                {{$cmp->target->phone_number}}</a></li>
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>
-                                                {{$cmp->state->name}}</a></li>
+                                                {{$cmp->organization->phone}}</a></li>
+                                            <li class="list-inline-item"><a href="#"><span class="fa fa-clock-o pr5"></span>
+                                                {{\Carbon\Carbon::parse($cmp->created_at)->diffForHumans()}}</a></li>
                                         </ul>
                                     </div>
                                     <div class="fp_footer">

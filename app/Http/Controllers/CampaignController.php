@@ -27,6 +27,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
+        //$camps = Campaign::with('states', 'organizations', 'categories')->paginate(10);
         $camps = Campaign::all();
         return view('back.campaigns', compact('camps'));
     }
@@ -96,6 +97,18 @@ class CampaignController extends Controller
         $camps = Campaign::where('organization_id', Auth::user()->organization->id)->get();
 //        $camps = DB::table('campaigns')->where('organization_id', Auth::user()->organization->id)->get();
         return view('front.my_campaigns', compact('camps'));
+    }
+
+    public function approve($id){
+        DB::table('campaigns')->where('id', $id)->update(['approved'=>1]);
+        Alert('Campaign Approved', '', 'success');
+        return back();
+    }
+
+    public function decline($id){
+        DB::table('campaigns')->where('id', $id)->update(['approved'=>0]);
+        Alert('Campaign Declined', '', 'error');
+        return back();
     }
 
 

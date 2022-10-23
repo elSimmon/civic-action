@@ -25,9 +25,10 @@
                                             <table class="table table-responsive">
                                                 <thead>
                                                 <tr class="carttable_row">
-                                                    <th class="cartm_title">Organization</th>
+                                                    <th class="cartm_title">Username</th>
                                                     <th class="cartm_title">Email</th>
                                                     <th class="cartm_title">Phone</th>
+                                                    <th class="cartm_title">Organization</th>
                                                     <th class="cartm_title">Role</th>
                                                     <th class="cartm_title">Actions</th>
                                                     <th class="cartm_title"></th>
@@ -38,7 +39,16 @@
                                                     <tr>
                                                         <td>{{$user->name}}</td>
                                                         <td>{{$user->email}}</td>
-                                                        <td>{{$user->organization->name}}</td>
+                                                        <td>
+                                                            @if($campaign->organization->id != null)
+                                                                {{$user->organization->phone}}
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if($campaign->organization->id != null)
+                                                                {{$user->organization->name}}
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             @if($user->role > 0)
                                                                 <a href="{{route('remove-admin',[$user->id])}}" class="btn btn-sm btn-danger">Remove Admin</a>
@@ -68,21 +78,6 @@
                                     <div class="col-lg-12">
                                         <div class="mbp_pagination mt10">
                                             <ul class="page_navigation">
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> <span class="fa fa-angle-left"></span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item active" aria-current="page">
-                                                    <a class="page-link" href="#">3 <span class="sr-only">(current)</span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#"><span class="fa fa-angle-right"></span></a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>

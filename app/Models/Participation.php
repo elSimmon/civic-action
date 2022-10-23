@@ -14,4 +14,8 @@ class Participation extends Model
     public function campaign(){
         return $this->belongsTo(Campaign::class);
     }
+
+    public function state(){
+        return $this->belongsTo(State::class);
+    }
 }

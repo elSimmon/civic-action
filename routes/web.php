@@ -46,6 +46,8 @@ Route::get('/my-campaigns', [App\Http\Controllers\CampaignController::class, 'my
 Route::get('/create-campaign', [App\Http\Controllers\CampaignController::class, 'create'])->name('create-campaign');
 Route::post('/save-campaign', [App\Http\Controllers\CampaignController::class, 'store'])->name('save-campaign');
 Route::get('/campaign/{id}', [App\Http\Controllers\CampaignController::class, 'show'])->name('campaign');
+Route::get('/approve-campaign/{id}', [App\Http\Controllers\CampaignController::class, 'approve'])->name('approve-campaign');
+Route::get('/decline-campaign/{id}', [App\Http\Controllers\CampaignController::class, 'decline'])->name('decline-campaign');
 
 
 //admin routes

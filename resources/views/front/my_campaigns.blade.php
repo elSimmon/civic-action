@@ -39,8 +39,8 @@
                                                     <tr>
                                                         <th scope="row">
                                                             <ul class="cart_list">
-                                                                <li class="list-inline-item pr10"><a href="#"><img src="{{asset('targets/'.$camp->target->image)}}" alt="Photo"></a></li>
-                                                                <li class="list-inline-item"><a class="cart_title" href="#">{{$camp->target->fullname}}</a></li>
+                                                                <li class="list-inline-item pr10"><a href="#"><img src="{{asset('campaign_images/'.$camp->image)}}" alt="Photo"></a></li>
+                                                                <li class="list-inline-item"><a class="cart_title" href="#">{{$camp->target_category->name}}</a></li>
                                                             </ul>
                                                         </th>
                                                         <td>{{$camp->title}}</td>

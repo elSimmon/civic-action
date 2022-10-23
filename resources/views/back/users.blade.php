@@ -40,12 +40,12 @@
                                                         <td>{{$user->name}}</td>
                                                         <td>{{$user->email}}</td>
                                                         <td>
-                                                            @if($campaign->organization->id != null)
+                                                            @if($user->organization != null)
                                                                 {{$user->organization->phone}}
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            @if($campaign->organization->id != null)
+                                                            @if($user->organization != null)
                                                                 {{$user->organization->name}}
                                                             @endif
                                                         </td>

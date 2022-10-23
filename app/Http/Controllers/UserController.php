@@ -26,8 +26,8 @@ class UserController extends Controller
     }
 
     public function removeAdmin($id){
-        DB::table('users')->where('id', $id)->update(['role'=>1]);
-        Alert('Admin mode', 'User now has Admin priviledges', 'success');
+        DB::table('users')->where('id', $id)->update(['role'=>0]);
+        Alert('User mode', 'User now has no Admin priviledges', 'error');
         return back();
     }
 }

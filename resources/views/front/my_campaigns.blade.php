@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'My Campaigns')
 
 @section('content')
     @include('front.partials.dashboard_nav')
@@ -28,7 +29,7 @@
                                                     <th class="cartm_title">Target</th>
                                                     <th class="cartm_title">Title</th>
                                                     <th class="cartm_title">Category</th>
-                                                    <th class="cartm_title">State</th>
+                                                    <th class="cartm_title">Views</th>
                                                     <th class="cartm_title">Goal</th>
                                                     <th class="cartm_title">Status</th>
                                                     <th class="cartm_title">Actions</th>
@@ -45,7 +46,7 @@
                                                         </th>
                                                         <td>{{$camp->title}}</td>
                                                         <td>{{$camp->category->name}}</td>
-                                                        <td>{{$camp->state->name}}</td>
+                                                        <td>{{$camp->views->count()}}</td>
                                                         <td>{{number_format($camp->goal)}}</td>
                                                         <td>
                                                             @switch($camp->approved)
@@ -58,14 +59,8 @@
                                                         </td>
                                                         <td class="editing_list">
                                                             <ul>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><span class="flaticon-edit"></span></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"><span class="flaticon-view"></span></a>
-                                                                </li>
-                                                                <li class="list-inline-item">
-                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><span class="flaticon-delete"></span></a>
+                                                                <li class="list-inline-item bg-info">
+                                                                    <a href="{{route('edit-campaign',$camp->id)}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><span class="flaticon-edit text-white"></span></a>
                                                                 </li>
                                                             </ul>
                                                         </td>
@@ -76,29 +71,10 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="mbp_pagination mt10">
-                                            <ul class="page_navigation">
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true"> <span class="fa fa-angle-left"></span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item active" aria-current="page">
-                                                    <a class="page-link" href="#">3 <span class="sr-only">(current)</span></a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#"><span class="fa fa-angle-right"></span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        {{$camps->links('pagination::bootstrap-4')}}
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

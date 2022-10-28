@@ -17,7 +17,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::all();
+        $reviews = Review::latest()->paginate(10);
         return view('back.reviews', compact('reviews'));
     }
 
@@ -28,7 +28,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        $reviews = Review::where('organization_id', Auth::user()->organization->id)->get();
+        $reviews = Review::where('organization_id', Auth::user()->organization->id)->latest()->paginate(5);
         return view('front.my_reviews', compact('reviews'));
     }
 

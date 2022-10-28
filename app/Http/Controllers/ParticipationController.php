@@ -33,7 +33,7 @@ class ParticipationController extends Controller
      */
     public function create()
     {
-        $pats = Participation::where('organization_id', Auth::user()->organization->id)->get();
+        $pats = Participation::where('organization_id', Auth::user()->organization->id)->latest()->paginate(5);
         return view('front.participations', compact('pats'));
     }
 

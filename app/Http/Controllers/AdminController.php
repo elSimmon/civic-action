@@ -23,6 +23,9 @@ class AdminController extends Controller
         $targets = Target::all();
         $participants = Participation::all();
         $recent_participants = Participation::latest()->take(10)->get();
-        return view('back.dashboard', compact('profiles', 'campaigns', 'users', 'targets', 'participants', 'recent_participants'));
+        $recent_users = User::latest()->take(10)->get();
+        $recent_campaigns = Campaign::latest()->take(10)->get();
+        $recent_targets = Target::latest()->take(10)->get();
+        return view('back.dashboard', compact('profiles', 'campaigns', 'users', 'targets', 'participants', 'recent_participants', 'recent_users', 'recent_campaigns', 'recent_targets'));
     }
 }

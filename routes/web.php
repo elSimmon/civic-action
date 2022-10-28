@@ -48,6 +48,8 @@ Route::post('/save-campaign', [App\Http\Controllers\CampaignController::class, '
 Route::get('/campaign/{id}', [App\Http\Controllers\CampaignController::class, 'show'])->name('campaign');
 Route::get('/approve-campaign/{id}', [App\Http\Controllers\CampaignController::class, 'approve'])->name('approve-campaign');
 Route::get('/decline-campaign/{id}', [App\Http\Controllers\CampaignController::class, 'decline'])->name('decline-campaign');
+Route::get('/edit-campaign/{id}', [App\Http\Controllers\CampaignController::class, 'edit'])->name('edit-campaign');
+Route::post('/update-campaign/{id}', [App\Http\Controllers\CampaignController::class, 'update'])->name('update-campaign');
 
 
 //admin routes
@@ -74,6 +76,7 @@ Route::get('/upload-targets', [\App\Http\Controllers\TargetController::class, 't
 Route::post('/store-targets', [\App\Http\Controllers\TargetController::class, 'store'])->name('store-targets');
 Route::post('/new-target', [\App\Http\Controllers\TargetController::class, 'create'])->name('new-target');
 Route::get('getTargets/{id}', [App\Http\Controllers\CampaignController::class, 'getTargets']);
+Route::get('my-targets', [App\Http\Controllers\TargetController::class, 'myTargets'])->name('my-targets');
 
 //Participation and reviews
 Route::post('/participate', [\App\Http\Controllers\ParticipationController::class, 'store'])->name('participate');

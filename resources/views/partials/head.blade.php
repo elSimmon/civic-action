@@ -11,7 +11,7 @@
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{asset('guido/css/responsive.css')}}">
 <!-- Title -->
-<title>Civic Action Hub - Have a say in Nigeria's economic development and politics</title>
+<title>CivicAction - @yield('title')</title>
 <!-- Favicon -->
 <link href="{{asset('guido/images/favicon.ico')}}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
 <link href="{{asset('guido/images/favicon.ico')}}" sizes="128x128" rel="shortcut icon" />

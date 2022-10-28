@@ -9,7 +9,7 @@ class Target extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image', 'fullname', 'target_category_id', 'state_id', 'constituency', 'designation', 'phone_number', 'email', 'approved'];
+    protected $fillable = ['image', 'fullname', 'user_id', 'target_category_id', 'state_id', 'constituency', 'designation', 'phone_number', 'email', 'approved'];
 
     protected $primaryKey = 'id';
 
@@ -23,5 +23,9 @@ class Target extends Model
 
     public function target_category(){
         return $this->belongsTo(TargetCategory::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

@@ -41,4 +41,8 @@ class Campaign extends Model
     public function reviews(){
         return $this->hasMany(Review::class);
     }
+
+    public function views(){
+        return $this->hasMany(View::class);
+    }
 }

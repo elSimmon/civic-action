@@ -7,8 +7,8 @@
                 <li class="active"><a href="{{route('organization-profile')}}"><span class="flaticon-avatar"></span>  Profile</a></li>
                 <li><a href="{{route('my-campaigns')}}"><span class="flaticon-list"></span> My Campaigns</a></li>
                 <li><a href="{{route('participants')}}"><span class="flaticon-love"></span> Campaign Participants</a></li>
-                <li><a href="#"><span class="flaticon-chat"></span> Messages</a></li>
                 <li><a href="{{route('my-reviews')}}"><span class="flaticon-note"></span> Campaign Reviews</a></li>
+                <li><a href="{{route('my-targets')}}"><span class="flaticon-note"></span> My Targets</a></li>
             </ul>
         </div>
     </div>

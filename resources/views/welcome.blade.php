@@ -76,43 +76,20 @@
                                             </form>
                                         </div>
                                     </div>
+                                    @php
+                                        $cats = \App\Models\Category::all();
+                                    @endphp
                                     <div class="home_mobile_slider home_custom_list dn db-767">
-                                        <div class="item">
-                                            <div class="icon_home1">
-                                                <div class="icon"><span class="flaticon-cutlery"></span></div>
-                                                <p>Politics</p>
+                                        @foreach($cats as $cat)
+                                            <div class="item">
+                                                <a href="{{route('category',[$cat->name])}}">
+                                                    <div class="icon_home1">
+                                                        <div class="icon"><span class="flaticon-tent"></span></div>
+                                                        <p>{{$cat->name}}</p>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="icon_home1">
-                                                <div class="icon"><span class="flaticon-shopping-bag"></span></div>
-                                                <p>Education</p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="icon_home1">
-                                                <div class="icon"><span class="flaticon-tent"></span></div>
-                                                <p>Security</p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="icon_home1">
-                                                <div class="icon"><span class="flaticon-desk-bell"></span></div>
-                                                <p>Economy</p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="icon_home1">
-                                                <div class="icon"><span class="flaticon-mirror"></span></div>
-                                                <p>Religion</p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="icon_home1">
-                                                <div class="icon"><span class="flaticon-brake"></span></div>
-                                                <p>Sports</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -132,9 +109,7 @@
                         <p><em class="text-white">What are you interested in?</em></p>
                     </div>
                 </div>
-                @php
-                $cats = \App\Models\Category::all();
-                @endphp
+
                 <div class="row">
                     @foreach($cats as $cat)
                     <div class="col-sm-6 col-md-4 col-xl-2">
@@ -193,8 +168,7 @@
                                             <li class="list-inline-item"><a href="#">{{$cmp->category->name}}</a></li>
                                         </ul>
                                         <ul class="fp_meta float-right mb0">
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-zoom"></span></a></li>
-                                            <li class="list-inline-item"><a class="icon" href="#"><span class="flaticon-love"></span></a></li>
+                                            <li class="list-inline-item"><a class="icon" href="#"><span class="fa fa-eye text-success">&nbsp;{{number_format($cmp->views->count())}}</span></a></li>
                                         </ul>
                                     </div>
                                 </div>

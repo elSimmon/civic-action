@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'My Dashboard')
 
 @section('content')
     @include('front.partials.dashboard_nav')
@@ -26,7 +27,7 @@
                     <div class="ff_one style2">
                         <div class="icon"><span class="flaticon-note"></span></div>
                         <div class="detais">
-                            <div class="timer">9382</div>
+                            <div class="timer">{{$my_pats->count()}}</div>
                             <p>My Campaign Participants</p>
                         </div>
                     </div>
@@ -35,8 +36,8 @@
                     <div class="ff_one style3">
                         <div class="icon"><span class="flaticon-chat"></span></div>
                         <div class="detais">
-                            <div class="timer">74</div>
-                            <p>Messages</p>
+                            <div class="timer">{{$my_revs->count()}}</div>
+                            <p>Campaign Reviews</p>
                         </div>
                     </div>
                 </div>
@@ -44,56 +45,35 @@
                     <div class="ff_one style4">
                         <div class="icon"><span class="flaticon-love"></span></div>
                         <div class="detais">
-                            <div class="timer">32</div>
-                            <p>Bookmarks</p>
+                            <div class="timer">{{$my_targs->count()}}</div>
+                            <p>Targets I Uploaded</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7 col-xl-8">
-                    <div class="application_statics">
-                        <h4>Total Views</h4>
-                        <div class="c_container"></div>
-                    </div>
+                    <div class="recent_job_activity">
+                            <h4 class="title">Participation Activities</h4>
+                            @foreach($my_pats as $pat)
+                                <div class="grid style1">
+                                <ul>
+                                    <li class="list-inline-item btn-success"><div class="icon"><span class="fa fa-check"></span></div></li>
+                                    <li class="list-inline-item"><p>{{$pat->name}} participated on <span class="text-success text-success">{{$pat->campaign->title}}</span> {{\Carbon\Carbon::parse($pat->created_at)->diffForHumans()}}</p></li>
+                                </ul>
+                            </div>
+                            @endforeach
+                        </div>
                 </div>
                 <div class="col-lg-5 col-xl-4">
                     <div class="recent_job_activity">
-                        <h4 class="title">Recent Activities</h4>
-                        <div class="grid style1">
+                        <h4 class="title">Review Activities</h4>
+                        @foreach($my_revs as $rev)
+                            <div class="grid style1">
                             <ul>
                                 <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
-                                <li class="list-inline-item"><p>Your listing <span>Hotel Gulshan</span> has been approved!.</p></li>
+                                <li class="list-inline-item"><p>{{$rev->username}} reviewed <span class="text-success">{{$rev->campaign->title}}</span> {{\Carbon\Carbon::parse($rev->created_at)->diffForHumans()}}</p></li>
                             </ul>
                         </div>
-                        <div class="grid style2">
-                            <ul>
-                                <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
-                                <li class="list-inline-item"><p>Your listing <span>Burger House</span> has been approved!.</p></li>
-                            </ul>
-                        </div>
-                        <div class="grid style3">
-                            <ul>
-                                <li class="list-inline-item"><div class="icon"><span class="flaticon-note"></span></div></li>
-                                <li class="list-inline-item"><p>Pitter Parker left a review 3.4 on John's <span>John's Coffee Shop</span></p></li>
-                            </ul>
-                        </div>
-                        <div class="grid style4">
-                            <ul>
-                                <li class="list-inline-item"><div class="icon"><span class="flaticon-love"></span></div></li>
-                                <li class="list-inline-item"><p>Someone bookmarked your <span>Burger House</span> listing!</p></li>
-                            </ul>
-                        </div>
-                        <div class="grid style5">
-                            <ul>
-                                <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
-                                <li class="list-inline-item"><p><span>Your listing Holiday Home has been approved!</span></p></li>
-                            </ul>
-                        </div>
-                        <div class="grid style6 mb0">
-                            <ul class="pb0 mb0 bb_none">
-                                <li class="list-inline-item"><div class="icon"><span class="flaticon-love"></span></div></li>
-                                <li class="list-inline-item"><p><span>Someone bookmarked your Moonlight Hotel listing!</span></p></li>
-                            </ul>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

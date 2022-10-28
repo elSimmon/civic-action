@@ -60,10 +60,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="mbp_pagination mt10">
-                                            <ul class="page_navigation">
-                                            </ul>
-                                        </div>
+                                       {{$reviews->links('pagination::bootstrap-4')}}
                                     </div>
                                 </div>
                             </div>

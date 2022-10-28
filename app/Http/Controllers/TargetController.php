@@ -7,6 +7,7 @@ use App\Models\Target;
 use App\Models\TargetCategory;
 use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -115,6 +116,11 @@ class TargetController extends Controller
         }
         Alert('Success Upload', 'Please waite for about 24 hrs.', 'success');
         return back();
+    }
+
+    public function myTargets(){
+        $targets = Target::where('user_id', Auth::id())->latest()->paginate(5);
+        return view('front.my_targets', compact('targets'));
     }
 
     /**

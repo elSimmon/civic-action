@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'Campaign by Category')
 
 @section('content')
     <!-- 6th Home Design -->
@@ -67,8 +68,7 @@
                                                 <li class="list-inline-item"><a href="#">{{$cmp->category->name}}</a></li>
                                             </ul>
                                             <ul class="fp_meta float-right mb0">
-                                                <li class="list-inline-item"><a href="#"><span class="flaticon-zoom"></span></a></li>
-                                                <li class="list-inline-item"><a class="icon" href="#"><span class="flaticon-love"></span></a></li>
+                                                <li class="list-inline-item"><a class="icon" href="#"><span class="fa fa-eye text-success">&nbsp;{{number_format($cmp->views->count())}}</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -78,11 +78,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="mbp_pagination mt10">
-                        <div class="new_line_pagination text-center">
-                            {{--                            {{$campaigns->paginate()}}--}}
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

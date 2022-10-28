@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'Campaign Categories')
 
 @section('content')
     @include('back.partials.dashboard_nav')
@@ -28,48 +29,7 @@
                                             <input type="text" name="name" class="form-control" id="formGroupExampleInput1" placeholder="Agriculture" required>
                                         </div>
                                     </div>
-{{--                                    <div class="col-lg-12">--}}
-{{--                                        <div class="my_profile_setting_input form-group">--}}
-{{--                                            <label for="formGroupExampleInput8">Phone</label>--}}
-{{--                                            <input type="text" class="form-control" id="formGroupExampleInput8">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-12">--}}
-{{--                                        <div class="my_profile_setting_input form-group">--}}
-{{--                                            <label for="formGroupExampleEmail">Email</label>--}}
-{{--                                            <input type="email" class="form-control" id="formGroupExampleEmail">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-xl-12">--}}
-{{--                                        <div class="my_profile_setting_textarea">--}}
-{{--                                            <label for="exampleFormControlTextarea1">Notes</label>--}}
-{{--                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-6 col-xl-6">--}}
-{{--                                        <div class="my_profile_setting_input form-group">--}}
-{{--                                            <label for="formGroupExampleInput5">Facebook</label>--}}
-{{--                                            <input type="text" class="form-control" id="formGroupExampleInput5">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-6 col-xl-6">--}}
-{{--                                        <div class="my_profile_setting_input form-group">--}}
-{{--                                            <label for="formGroupExampleInput6">Twitter</label>--}}
-{{--                                            <input type="text" class="form-control" id="formGroupExampleInput6">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-6 col-xl-6">--}}
-{{--                                        <div class="my_profile_setting_input form-group">--}}
-{{--                                            <label for="formGroupExampleInput7">Google+</label>--}}
-{{--                                            <input type="text" class="form-control" id="formGroupExampleInput7">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-6 col-xl-6">--}}
-{{--                                        <div class="my_profile_setting_input form-group">--}}
-{{--                                            <label for="formGroupExampleInput9">Instagram</label>--}}
-{{--                                            <input type="text" class="form-control" id="formGroupExampleInput9">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+
                                     <div class="col-xl-12">
                                         <div class="my_profile_setting_input">
                                             <button type="submit" class="btn update_btn">Save Category</button>

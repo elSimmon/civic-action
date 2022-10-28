@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Category;
 use App\Models\State;
+use App\Models\View;
 use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,19 +20,23 @@ class PagesController extends Controller
     }
 
     public function explore(){
-        $campaigns = Campaign::where('approved', '=', 1)->get();
+        $campaigns = Campaign::where('approved', '=', 1)->latest()->get();
         return view('front.explore_campaigns', compact('campaigns'));
     }
 
     public function showCategory($name){
-        $cat = Category::where('name', $name)->get();
-        $campaigns = Campaign::whereBelongsTo($cat)->where('approved', '=', 1)->get();
+        $cat = Category::where('name', $name)->latest()->get();
+        $campaigns = Campaign::whereBelongsTo($cat)->where('approved', '=', 1)->latest()->get();
         return view('front.campaign_by_category', compact('campaigns', 'name'));
     }
 
     public function campaignDetails($id){
         $campaign = Campaign::findorFail($id);
         $states = State::all();
+        $view = new View();
+        $view->campaign_id = $id;
+        $view->count = 1;
+        $view->save();
         return view('front.campaign_details', compact('campaign', 'states'));
     }
 

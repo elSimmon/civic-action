@@ -27,8 +27,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        //$camps = Campaign::with('states', 'organizations', 'categories')->paginate(10);
-        $camps = Campaign::all();
+        $camps = Campaign::latest()->paginate(8);
         return view('back.campaigns', compact('camps'));
     }
 
@@ -39,21 +38,18 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $states = State::all();
-        $target_categories = TargetCategory::all();
-        return view('front.create_campaign', compact('categories', 'states', 'target_categories'));
+        $org = DB::table('organizations')->where('user_id',  Auth::id())->first();
+        if($org == null){
+            return redirect()->route('create-organization');
+        }else {
+            $categories = Category::all();
+            $states = State::all();
+            $target_categories = TargetCategory::all();
+            return view('front.create_campaign', compact('categories', 'states', 'target_categories'));
+        }
     }
 
-    public function getLgas($id=0){
-        $lgaData['data'] = Lga::orderBy('name', 'asc')->select('id', 'name')->where('state_id', $id)->get();
-        return response()->json($lgaData);
-    }
 
-    public function getTargets($id=0){
-        $targetData['data'] = Target::orderBy('fullname', 'asc')->select('id', 'fullname', 'designation')->where('state_id', $id)->get();
-        return response()->json($targetData);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -94,8 +90,7 @@ class CampaignController extends Controller
     }
 
     public function myCampaigns(){
-        $camps = Campaign::where('organization_id', Auth::user()->organization->id)->get();
-//        $camps = DB::table('campaigns')->where('organization_id', Auth::user()->organization->id)->get();
+        $camps = Campaign::where('organization_id', Auth::user()->organization->id)->latest()->paginate(5);
         return view('front.my_campaigns', compact('camps'));
     }
 
@@ -129,9 +124,13 @@ class CampaignController extends Controller
      * @param  \App\Models\Campaign  $campaign
      * @return \Illuminate\Http\Response
      */
-    public function edit(Campaign $campaign)
+    public function edit($id)
     {
-        //
+        $campaign = Campaign::findOrFail($id);
+        $categories = Category::all();
+        $states = State::all();
+        $target_categories = TargetCategory::all();
+        return view('front.edit_campaign', compact('categories', 'states', 'target_categories', 'campaign'));
     }
 
     /**
@@ -141,11 +140,37 @@ class CampaignController extends Controller
      * @param  \App\Models\Campaign  $campaign
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Campaign $campaign)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'goal'=>'required|numeric'
+        ]);
+
+        DB::table('campaigns')->where('id', $id)->update(['title'=>$request->title, 'description'=>$request->description, 'objective'=>$request->objective, 'category_id'=>$request->category_id, 'target_category_id'=>$request->target_category_id, 'type'=>$request->type, 'message'=>$request->message, 'goal'=>$request->goal, 'approved'=>0]);
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('campaign_images/'.$filename);
+            Image::make($image)->save($location);
+
+            DB::table('campaigns')->where('id', $id)->update(['image'=>$filename, 'approved'=>0]);
+        }
+
+        Alert('Campaign Updated Successfully', 'Please wait for admin to approve your campaign', 'success');
+        return redirect('my-campaigns');
     }
 
+
+    public function getLgas($id=0){
+        $lgaData['data'] = Lga::orderBy('name', 'asc')->select('id', 'name')->where('state_id', $id)->get();
+        return response()->json($lgaData);
+    }
+
+    public function getTargets($id=0){
+        $targetData['data'] = Target::orderBy('fullname', 'asc')->select('id', 'fullname', 'designation')->where('state_id', $id)->get();
+        return response()->json($targetData);
+    }
     /**
      * Remove the specified resource from storage.
      *

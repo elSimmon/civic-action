@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'All Campaigns')
 
 @section('content')
     @include('back.partials.dashboard_nav')
@@ -31,6 +32,7 @@
                                                     <th class="cartm_title">Category</th>
                                                     <th class="cartm_title">State</th>
                                                     <th class="cartm_title">Goal</th>
+                                                    <th class="cartm_title">Views</th>
                                                     <th class="cartm_title">Status</th>
                                                     <th class="cartm_title">Actions</th>
                                                 </tr>
@@ -49,6 +51,7 @@
                                                         <td>{{$camp->category->name}}</td>
                                                         <td>{{$camp->state->name}}</td>
                                                         <td>{{number_format($camp->goal)}}</td>
+                                                        <td>{{number_format($camp->views->count())}}</td>
                                                         <td>
                                                             @switch($camp->approved)
                                                                 @case(1)
@@ -76,6 +79,9 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        {{$camps->links('pagination::bootstrap-4')}}
                                     </div>
                                 </div>
                             </div>

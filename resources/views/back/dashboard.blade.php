@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title', 'Admin Dashboard')
 
 @section('content')
     @include('back.partials.dashboard_nav')
@@ -49,22 +50,55 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 col-xl-8">
-                    <div class="application_statics">
-                        <h4>Total Views</h4>
-                        <div class="c_container"></div>
+                <div class="col-lg-6 col-xl-6">
+                    <div class="recent_job_activity">
+                        <h4 class="title">Recent Users</h4>
+                        @foreach($recent_users as $user)
+                            <div class="grid style1">
+                                <ul>
+                                    <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
+                                    <li class="list-inline-item"><p>{{$user->name}}; Created a User Account  {{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</p></li>
+                                </ul>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-lg-5 col-xl-4">
+                <div class="col-lg-6 col-xl-6">
                     <div class="recent_job_activity">
                         <h4 class="title">Recent Participants</h4>
                         @foreach($recent_participants as $part)
                             <div class="grid style1">
-                            <ul>
-                                <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
-                                <li class="list-inline-item"><p>{{$part->name}}; <span>{{$part->email}};</span> {{$part->phone}}. <br/><span class="text-success">{{$part->campaign->title}}</span></p></li>
-                            </ul>
-                        </div>
+                                <ul>
+                                    <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
+                                    <li class="list-inline-item"><p>{{$part->name}}; participated on <span class="text-success">{{$part->campaign->title}}</span> {{\Carbon\Carbon::parse($part->created_at)->diffForHumans()}}</p></li>
+                                </ul>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6">
+                    <div class="recent_job_activity">
+                        <h4 class="title">Recent Campaigns</h4>
+                        @foreach($recent_campaigns as $camp)
+                            <div class="grid style1">
+                                <ul>
+                                    <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
+                                    <li class="list-inline-item"><p>{{$camp->organization->name}}; Created a new campaign: <span class="text-success">{{$camp->title}}</span>,  {{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</p></li>
+                                </ul>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6">
+                    <div class="recent_job_activity">
+                        <h4 class="title">Recent Targets</h4>
+                        @foreach($recent_targets as $tag)
+                            <div class="grid style1">
+                                <ul>
+                                    <li class="list-inline-item"><div class="icon"><span class="fa fa-check"></span></div></li>
+                                    <li class="list-inline-item"><p>{{$tag->user->name}}; added a new Target <span class="text-success">{{$tag->fullname}}</span> {{\Carbon\Carbon::parse($tag->created_at)->diffForHumans()}}</p></li>
+                                </ul>
+                            </div>
                         @endforeach
                     </div>
                 </div>
